@@ -38,44 +38,75 @@ public class RegistrActivity extends Activity {
                 final String password = etPassword.getText().toString();
                 final int age = Integer.parseInt(etAge.getText().toString());
 
-
-                Response.Listener<String> responseListener = new Response.Listener<String>(){
+                ///Проверка Логина
+                Response.Listener<String> responseListener1 = new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(String response1) {
                         try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
+                            JSONObject jsonResponse1 = new JSONObject(response1);
+                            boolean success = jsonResponse1.getBoolean("success");
 
-                            Toast t = Toast.makeText(getApplication(), "I try", Toast.LENGTH_SHORT);
+                            Toast t = Toast.makeText(getApplication(), "I try prov", Toast.LENGTH_SHORT);
                             t.show();
 
-                            if(success){
-                                Intent intent = new Intent(RegistrActivity.this, LoginActivity.class);
-                                RegistrActivity.this.startActivity(intent);
-                                Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_LONG);
+                            if((!success)&&(password.length()>=6)) {
+
+                                /////Регистрация
+                                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        try {
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
+
+                                            Toast t = Toast.makeText(getApplication(), "I try registr", Toast.LENGTH_SHORT);
+                                            t.show();
+
+                                            if (success) {
+                                                Intent intent = new Intent(RegistrActivity.this, LoginActivity.class);
+                                                RegistrActivity.this.startActivity(intent);
+                                                Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_LONG);
+                                                y.show();
+                                            } else {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(RegistrActivity.this);
+                                                builder.setMessage("Registr failed")
+                                                        .setNegativeButton("Retry", null)
+                                                        .create()
+                                                        .show();
+                                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_SHORT);
+                                                y.show();
+                                            }
+                                        } catch (JSONException e) {
+                                            Toast y = Toast.makeText(getApplication(), "Catch registr", Toast.LENGTH_SHORT);
+                                            y.show();
+                                        }
+                                    }
+                                };
+
+                                RegistrRequest registrRequest = new RegistrRequest(name, login, password, age, responseListener);
+                                RequestQueue queue = Volley.newRequestQueue(RegistrActivity.this);
+                                queue.add(registrRequest);
+
+                            } else {
+
+                                ////Имя занято
+                                Toast y = Toast.makeText(getApplication(), "This LOGIN already used or PASSWORD is to short. Enter another", Toast.LENGTH_LONG);
                                 y.show();
+                                etName.setText("");
+                                etLogin.setText("");
+                                etPassword.setText("");
+                                etAge.setText("");
                             }
-                            else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RegistrActivity.this);
-                                builder.setMessage("Registr faied")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_SHORT);
-                                y.show();
-                            }
-                        } catch (JSONException e) {
-                            Toast y = Toast.makeText(getApplication(), "Catch", Toast.LENGTH_SHORT);
+
+                        } catch(JSONException e) {
+                            Toast y = Toast.makeText(getApplication(), "Catch prov", Toast.LENGTH_SHORT);
                             y.show();
                         }
                     }
                 };
-
-
-                RegistrRequest registrRequest = new RegistrRequest(name, login, password, age, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegistrActivity.this);
-                queue.add(registrRequest);
-
+                ProvRequest provRequest = new ProvRequest(login, responseListener1);
+                RequestQueue queue1 = Volley.newRequestQueue(RegistrActivity.this);
+                queue1.add(provRequest);
             }
         });
     }
