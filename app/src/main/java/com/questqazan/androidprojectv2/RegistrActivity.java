@@ -27,7 +27,6 @@ public class RegistrActivity extends Activity {
         final EditText etName = (EditText) findViewById(R.id.NameET);
         final EditText etLogin = (EditText) findViewById(R.id.LoginET);
         final EditText etPassword = (EditText) findViewById(R.id.PasswordET);
-        final EditText etAge = (EditText) findViewById(R.id.AgeET);
         final Button registr = (Button) findViewById(R.id.Registr_button);
 
         registr.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +35,7 @@ public class RegistrActivity extends Activity {
                 final String name = etName.getText().toString();
                 final String login = etLogin.getText().toString();
                 final String password = etPassword.getText().toString();
-                final int age = Integer.parseInt(etAge.getText().toString());
+                registr.setVisibility(View.INVISIBLE);
 
                 ///Проверка Логина
                 Response.Listener<String> responseListener1 = new Response.Listener<String>() {
@@ -46,8 +45,8 @@ public class RegistrActivity extends Activity {
                             JSONObject jsonResponse1 = new JSONObject(response1);
                             boolean success = jsonResponse1.getBoolean("success");
 
-                            Toast t = Toast.makeText(getApplication(), "I try prov", Toast.LENGTH_SHORT);
-                            t.show();
+                            //Toast t = Toast.makeText(getApplication(), "I try prov", Toast.LENGTH_SHORT);
+                            //t.show();
 
                             if((!success)&&(password.length()>=6)) {
 
@@ -59,31 +58,34 @@ public class RegistrActivity extends Activity {
                                             JSONObject jsonResponse = new JSONObject(response);
                                             boolean success = jsonResponse.getBoolean("success");
 
-                                            Toast t = Toast.makeText(getApplication(), "I try registr", Toast.LENGTH_SHORT);
-                                            t.show();
+                                            //Toast t = Toast.makeText(getApplication(), "I try registr", Toast.LENGTH_SHORT);
+                                            //t.show();
 
                                             if (success) {
                                                 Intent intent = new Intent(RegistrActivity.this, LoginActivity.class);
                                                 RegistrActivity.this.startActivity(intent);
-                                                Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_LONG);
-                                                y.show();
+                                                //Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_LONG);
+                                                //y.show();
                                             } else {
                                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegistrActivity.this);
                                                 builder.setMessage("Registr failed")
                                                         .setNegativeButton("Retry", null)
                                                         .create()
                                                         .show();
-                                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_SHORT);
+                                                registr.setVisibility(View.VISIBLE);
+
+                                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
                                                 y.show();
                                             }
                                         } catch (JSONException e) {
-                                            Toast y = Toast.makeText(getApplication(), "Catch registr", Toast.LENGTH_SHORT);
+                                            Toast y = Toast.makeText(getApplication(), "Catch registr", Toast.LENGTH_LONG);
                                             y.show();
+                                            registr.setVisibility(View.VISIBLE);
                                         }
                                     }
                                 };
 
-                                RegistrRequest registrRequest = new RegistrRequest(name, login, password, age, responseListener);
+                                RegistrRequest registrRequest = new RegistrRequest(name, login, password, responseListener);
                                 RequestQueue queue = Volley.newRequestQueue(RegistrActivity.this);
                                 queue.add(registrRequest);
 
@@ -95,16 +97,17 @@ public class RegistrActivity extends Activity {
                                 etName.setText("");
                                 etLogin.setText("");
                                 etPassword.setText("");
-                                etAge.setText("");
+                                registr.setVisibility(View.VISIBLE);
                             }
 
-                        } catch(JSONException e) {
+                           } catch(JSONException e) {
                             Toast y = Toast.makeText(getApplication(), "Catch prov", Toast.LENGTH_SHORT);
                             y.show();
+                            registr.setVisibility(View.VISIBLE);
                         }
                     }
                 };
-                ProvRequest provRequest = new ProvRequest(login, responseListener1);
+                ProvLoginRequest provRequest = new ProvLoginRequest(login, responseListener1);
                 RequestQueue queue1 = Volley.newRequestQueue(RegistrActivity.this);
                 queue1.add(provRequest);
             }

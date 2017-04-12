@@ -43,46 +43,53 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 final String login = LoginET.getText().toString();
                 final String password = PasswordET.getText().toString();
+                signin.setVisibility(View.INVISIBLE);
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setMessage("Please wait..")
+                        .setNegativeButton("Retry", null)
+                        .create()
+                        .show();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
                         try {
+                            //Toast t = Toast.makeText(getApplication(), "I try", Toast.LENGTH_SHORT);
+                            //t.show();
+
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
 
-                            Toast t = Toast.makeText(getApplication(), "I try", Toast.LENGTH_SHORT);
-                            t.show();
-
                             if(success){
-                                
-                                String name = jsonResponse.getString("name");
-                                int age = jsonResponse.getInt("age");
+
+                                String login = jsonResponse.getString("login");
                                 
                                 Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                intent.putExtra("name", name);
-                                intent.putExtra("age", age);
-                                
+                                intent.putExtra("login", login);
+
                                 LoginActivity.this.startActivity(intent);
 
-                                Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_LONG);
-                                y.show();
+                                //Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_SHORT);
+                                //y.show();
+
 
                             }
                             else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login failed")
+                                AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
+                                builder1.setMessage("Login failed")
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_SHORT);
+                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
                                 y.show();
+                                signin.setVisibility(View.VISIBLE);
                             }
                             
                         } catch (JSONException e) {
-                            Toast y = Toast.makeText(getApplication(), "Catch", Toast.LENGTH_SHORT);
+                            Toast y = Toast.makeText(getApplication(), "Catch", Toast.LENGTH_LONG);
                             y.show();
+                            signin.setVisibility(View.VISIBLE);
                         }
                     }
                 };
@@ -91,7 +98,7 @@ public class LoginActivity extends Activity {
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
 
-                
+
             }
         });
     }
