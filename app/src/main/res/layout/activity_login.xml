@@ -8,65 +8,65 @@
 
     <Button
         android:id="@+id/Sign_In_button"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="97dp"
-        android:text="Sign In"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:text="Войти"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/PasswordEt" />
 
     <TextView
         android:id="@+id/RegistrTV"
-        android:layout_width="153dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginBottom="31dp"
-        android:layout_marginRight="16dp"
-        android:text="Registr Here"
+        android:layout_marginBottom="118dp"
+        android:text="Зарегистрироваться"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="215dp"
-        tools:layout_editor_absoluteY="446dp" />
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <EditText
         android:id="@+id/LoginEt"
-        android:layout_width="269dp"
+        android:layout_width="300dp"
         android:layout_height="43dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="234dp"
+        android:layout_marginTop="240dp"
         android:ems="10"
-        android:hint="Login"
+        android:hint="Логин"
         android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="232dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/PasswordEt"
-        android:layout_width="269dp"
+        android:layout_width="300dp"
         android:layout_height="49dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="-1dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Пароль"
         android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginEt"
-        tools:layout_editor_absoluteY="272dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginEt" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="249dp"
-        android:layout_height="164dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="62dp"
-        android:src="@drawable/cdr"
-        android:visibility="visible"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/imageView5"
+        android:layout_width="300dp"
+        android:layout_height="165dp"
+        android:src="@drawable/logo_full"
+        app:srcCompat="@drawable/logo_full"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cdr" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/LoginEt"
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </android.support.constraint.ConstraintLayout>
