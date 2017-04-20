@@ -16,7 +16,8 @@
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@+id/LoginET"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
 
     <EditText
         android:id="@+id/LoginET"
@@ -28,7 +29,8 @@
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@+id/NameET"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
 
     <EditText
         android:id="@+id/NameET"
@@ -40,7 +42,8 @@
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="159dp"
+        android:layout_marginStart="16dp" />
 
     <Button
         android:id="@+id/Registr_button"
@@ -50,5 +53,7 @@
         android:layout_marginRight="26dp"
         android:text="Registr"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="26dp" />
+
 </android.support.constraint.ConstraintLayout>
