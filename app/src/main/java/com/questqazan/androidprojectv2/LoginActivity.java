@@ -17,6 +17,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class LoginActivity extends Activity {
 
     @Override
@@ -51,29 +54,145 @@ public class LoginActivity extends Activity {
                         .create()
                         .show();
 
+                //Логин
                 Response.Listener<String> responseListener = new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
                         try {
-                            //Toast t = Toast.makeText(getApplication(), "I try", Toast.LENGTH_SHORT);
-                            //t.show();
-
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
+                            final int[] b_time = {0};
+                            final int [] b_game = {0};
+                            if(success)
+                            {
 
-                            if(success){
+                                //// Проверка времени
+                                Response.Listener<String> responseListener1 = new Response.Listener<String>(){
+                                    @Override
+                                    public void onResponse(String response) {
+                                        try {
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
 
-                                String login = jsonResponse.getString("login");
-                                
-                                Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                intent.putExtra("login", login);
+                                            if (success) {
+                                                int year = jsonResponse.getInt("year");
+                                                int mounth = jsonResponse.getInt("mounth");
+                                                int day = jsonResponse.getInt("day");
+                                                int hour_start = jsonResponse.getInt("hour_start");
+                                                int hour_finish = jsonResponse.getInt("hour_finish");
 
-                                LoginActivity.this.startActivity(intent);
+                                                GregorianCalendar gcalendar = new GregorianCalendar();
+                                                int mounthNow = gcalendar.get(Calendar.MONTH);
+                                                int YearNow = gcalendar.get(Calendar.YEAR);
+                                                int dayNow = gcalendar.get(Calendar.DAY_OF_MONTH);
+                                                int hourNow = gcalendar.get(Calendar.HOUR_OF_DAY);
 
-                                //Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_SHORT);
-                                //y.show();
+                                                if (YearNow == year) {
+                                                    if (mounthNow == mounth) {
+                                                        if (dayNow == day) {
+                                                            if ((hourNow >= hour_start) && (hourNow < hour_finish)) {
+                                                                ////данные о игре
+                                                                Response.Listener<String> responseListener = new Response.Listener<String>()
+                                                                {
+                                                                    @Override
+                                                                    public void onResponse(String response) {
+                                                                        try{
+                                                                            JSONObject jsonResponse = new JSONObject(response);
+                                                                            boolean success = jsonResponse.getBoolean("success");
 
+                                                                            if(success)
+                                                                            {
+                                                                                int game = jsonResponse.getInt("game");
 
+                                                                                if(game != 0)
+                                                                                {
+                                                                                    String login =  LoginET.getText().toString();
+
+                                                                                    Intent intent = new Intent(LoginActivity.this, GameInterfaceActivity.class);
+                                                                                    intent.putExtra("login", login);
+                                                                                    signin.setVisibility(View.VISIBLE);
+
+                                                                                    LoginActivity.this.startActivity(intent);
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    String login =  LoginET.getText().toString();
+
+                                                                                    Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                                    intent.putExtra("login", login);
+                                                                                    signin.setVisibility(View.VISIBLE);
+
+                                                                                    LoginActivity.this.startActivity(intent);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        catch (JSONException e) {
+                                                                            Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
+                                                                            y.show();
+                                                                        }
+                                                                    }
+                                                                };
+
+                                                                AllInfoRequest allInfoRequest = new AllInfoRequest(login, responseListener);
+                                                                RequestQueue queue1 = Volley.newRequestQueue(LoginActivity.this);
+                                                                queue1.add(allInfoRequest);
+                                                                ////
+                                                            }
+                                                            else
+                                                            {
+                                                                String login =  LoginET.getText().toString();
+
+                                                                Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                intent.putExtra("login", login);
+                                                                signin.setVisibility(View.VISIBLE);
+
+                                                                LoginActivity.this.startActivity(intent);
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            String login =  LoginET.getText().toString();
+
+                                                            Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                            intent.putExtra("login", login);
+                                                            signin.setVisibility(View.VISIBLE);
+
+                                                            LoginActivity.this.startActivity(intent);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        String login =  LoginET.getText().toString();
+
+                                                        Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                        intent.putExtra("login", login);
+                                                        signin.setVisibility(View.VISIBLE);
+
+                                                        LoginActivity.this.startActivity(intent);
+                                                    }
+                                                }
+                                                else {
+                                                    String login =  LoginET.getText().toString();
+
+                                                    Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                    intent.putExtra("login", login);
+                                                    signin.setVisibility(View.VISIBLE);
+
+                                                    LoginActivity.this.startActivity(intent);
+                                                }
+                                            }
+                                        }
+                                        catch (JSONException e) {
+                                            Toast y = Toast.makeText(getApplication(), "None Time", Toast.LENGTH_LONG);
+                                            y.show();
+                                            }
+                                        }
+                                    };
+
+                                    TimeToStart timeToStart = new TimeToStart("1", responseListener1);
+                                    RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                                    queue.add(timeToStart);
+                                ////
                             }
                             else{
                                 AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
