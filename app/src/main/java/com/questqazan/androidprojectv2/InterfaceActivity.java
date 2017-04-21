@@ -40,10 +40,6 @@ public class InterfaceActivity extends Activity {
 
                     if(success)
                     {
-
-                        //Toast t = Toast.makeText(getApplication(), "Info loaded", Toast.LENGTH_SHORT);
-                        //t.show();
-
                         String name = jsonResponse.getString("name");
                         int point = jsonResponse.getInt("point");
                         int all_point = jsonResponse.getInt("all_point");
