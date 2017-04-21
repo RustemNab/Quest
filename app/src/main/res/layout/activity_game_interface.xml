@@ -116,26 +116,6 @@
         tools:layout_editor_absoluteY="401dp" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0/10"
-        android:textColor="@color/colorWhite"
-        android:textSize="21dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="439dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0/10"
-        android:textColor="@color/colorWhite"
-        android:textSize="21dp"
-        tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="439dp" />
-
-    <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -161,5 +141,25 @@
         android:layout_height="220dp"
         tools:layout_editor_absoluteX="195dp"
         tools:layout_editor_absoluteY="252dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="181dp"
+        android:layout_height="39dp"
+        app:srcCompat="@drawable/banner"
+        app:layout_constraintTop_toBottomOf="@id/imageView9"
+        app:layout_constraintLeft_toLeftOf="@id/imageView9"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="433dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="181dp"
+        android:layout_height="39dp"
+        app:srcCompat="@drawable/banner"
+        app:layout_constraintTop_toBottomOf="@id/imageView8"
+        app:layout_constraintLeft_toLeftOf="@id/imageView8"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="433dp" />
 
 </android.support.constraint.ConstraintLayout>
