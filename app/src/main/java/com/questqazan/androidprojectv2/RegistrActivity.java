@@ -37,7 +37,7 @@ public class RegistrActivity extends Activity {
                 final String password = etPassword.getText().toString();
                 registr.setVisibility(View.INVISIBLE);
 
-                ///Проверка Логина
+                //Проверка Логина
                 Response.Listener<String> responseListener1 = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response1) {
@@ -45,10 +45,7 @@ public class RegistrActivity extends Activity {
                             JSONObject jsonResponse1 = new JSONObject(response1);
                             boolean success = jsonResponse1.getBoolean("success");
 
-                            //Toast t = Toast.makeText(getApplication(), "I try prov", Toast.LENGTH_SHORT);
-                            //t.show();
-
-                            if((!success)&&(password.length()>=6)) {
+                            if ((!success) && (password.length() >= 6)) {
 
                                 /////Регистрация
                                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -58,14 +55,11 @@ public class RegistrActivity extends Activity {
                                             JSONObject jsonResponse = new JSONObject(response);
                                             boolean success = jsonResponse.getBoolean("success");
 
-                                            //Toast t = Toast.makeText(getApplication(), "I try registr", Toast.LENGTH_SHORT);
-                                            //t.show();
-
                                             if (success) {
                                                 Intent intent = new Intent(RegistrActivity.this, LoginActivity.class);
                                                 RegistrActivity.this.startActivity(intent);
-                                                //Toast y = Toast.makeText(getApplication(), "SUCCESS", Toast.LENGTH_LONG);
-                                                //y.show();
+
+
                                             } else {
                                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegistrActivity.this);
                                                 builder.setMessage("Registr failed")
@@ -100,7 +94,9 @@ public class RegistrActivity extends Activity {
                                 registr.setVisibility(View.VISIBLE);
                             }
 
-                           } catch(JSONException e) {
+                        }
+                        catch (JSONException e)
+                        {
                             Toast y = Toast.makeText(getApplication(), "Catch prov", Toast.LENGTH_SHORT);
                             y.show();
                             registr.setVisibility(View.VISIBLE);
