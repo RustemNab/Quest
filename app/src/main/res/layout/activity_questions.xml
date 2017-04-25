@@ -26,15 +26,10 @@
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardElevation="4dp"
-                app:contentPaddingBottom="24dp"
-                app:contentPaddingLeft="16dp"
-                app:contentPaddingRight="16dp"
-                app:contentPaddingTop="24dp"
+                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                card_view:cardCornerRadius="4dp">
+                app:layout_constraintTop_toBottomOf="@+id/cardView2"   >
 
                 <TextView
                     android:id="@+id/textView13"
@@ -49,15 +44,10 @@
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardElevation="4dp"
-                app:contentPaddingBottom="24dp"
-                app:contentPaddingLeft="16dp"
-                app:contentPaddingRight="16dp"
-                app:contentPaddingTop="24dp"
+                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView1"
-                card_view:cardCornerRadius="4dp">
+                app:layout_constraintTop_toBottomOf="@+id/cardView1"  >
 
                 <TextView
                     android:id="@+id/textView12"
@@ -72,15 +62,10 @@
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardElevation="4dp"
-                app:contentPaddingBottom="24dp"
-                app:contentPaddingLeft="16dp"
-                app:contentPaddingRight="16dp"
-                app:contentPaddingTop="24dp"
+                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4"
-                card_view:cardCornerRadius="4dp">
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"   >
 
                 <TextView
                     android:id="@+id/textView15"
@@ -95,15 +80,10 @@
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardElevation="4dp"
-                app:contentPaddingBottom="24dp"
-                app:contentPaddingLeft="16dp"
-                app:contentPaddingRight="16dp"
-                app:contentPaddingTop="24dp"
+                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardview3"
-                card_view:cardCornerRadius="4dp">
+                app:layout_constraintTop_toBottomOf="@+id/cardview3"       >
 
                 <TextView
                     android:id="@+id/textView14"
@@ -121,15 +101,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="7dp"
-                app:cardElevation="4dp"
-                app:contentPaddingBottom="24dp"
-                app:contentPaddingLeft="16dp"
-                app:contentPaddingRight="16dp"
-                app:contentPaddingTop="24dp"
+                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-                card_view:cardCornerRadius="4dp">
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2" >
 
                 <TextView
                     android:id="@+id/textView11"
