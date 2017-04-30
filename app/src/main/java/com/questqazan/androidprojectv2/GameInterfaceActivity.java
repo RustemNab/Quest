@@ -20,16 +20,16 @@ public class GameInterfaceActivity extends AppCompatActivity {
         questions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(GameInterfaceActivity.this, QuestionsActivity.class);
-                GameInterfaceActivity.this.startActivity(intent1);
+                Intent intent = new Intent(GameInterfaceActivity.this, QuestionsActivity.class);
+                GameInterfaceActivity.this.startActivity(intent);
             }
         });
 
         tasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(GameInterfaceActivity.this, TasksActivity.class);
-                GameInterfaceActivity.this.startActivity(intent1);
+                Intent intent = new Intent(GameInterfaceActivity.this, TasksActivity.class);
+                GameInterfaceActivity.this.startActivity(intent);
             }
         });
     }
