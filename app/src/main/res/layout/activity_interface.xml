@@ -10,8 +10,8 @@
         android:id="@+id/Go_button"
         android:layout_width="164dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="29dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="29dp"
         android:text="Go!!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

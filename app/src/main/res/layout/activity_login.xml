@@ -33,7 +33,7 @@
         app:layout_constraintHorizontal_bias="0.502" />
 
     <EditText
-        android:id="@+id/LoginEt"
+        android:id="@+id/AnswerEt"
         android:layout_width="300dp"
         android:layout_height="43dp"
         android:layout_marginTop="240dp"
@@ -54,14 +54,14 @@
         android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginEt" />
+        app:layout_constraintTop_toBottomOf="@+id/AnswerEt" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="280dp"
         android:layout_height="165dp"
         android:src="@drawable/logo_full"
-        app:layout_constraintBottom_toTopOf="@+id/LoginEt"
+        app:layout_constraintBottom_toTopOf="@+id/AnswerEt"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

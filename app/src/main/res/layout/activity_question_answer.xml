@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.questqazan.androidprojectv2.QuestionAnswerActivity"
+    android:background="@color/colorDarkBackground" >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="360dp"
+        android:layout_height="56dp"
+        android:background="@drawable/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview3"
+        style="@style/MyCardViewStyle"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="@color/colorDarkPanel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp"
+            android:text="авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+
+            <EditText
+                android:id="@+id/AnswerQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Ответ"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                app:layout_constraintLeft_toLeftOf="@id/textView13"
+                app:layout_constraintTop_toBottomOf="@id/textView13" />
+
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Отправить"
+                app:layout_constraintTop_toBottomOf="@id/AnswerQ"
+                app:layout_constraintRight_toRightOf="@id/textView13"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDarkBackground"
+    tools:context="com.questqazan.androidprojectv2.QuestionsActivity"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="360dp"
+        android:layout_height="56dp"
+        android:background="@drawable/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="2dp" />
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardview3"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/MyCardViewStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2"   >
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вопрос 3. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/MyCardViewStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView1"  >
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вопрос 2. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView5"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/MyCardViewStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"   >
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вопрос 5. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/MyCardViewStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview3"       >
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вопрос 4. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="352dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"
+                style="@style/MyCardViewStyle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2" >
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вопрос 1. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+            </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

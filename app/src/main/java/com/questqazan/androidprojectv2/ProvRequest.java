@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProvRequest extends StringRequest{
-    private static final String PROV_REQUST_URL = "https://aydar_test.000webhostapp.com/Prov.php";
+    private static final String PROV_REQUST_URL = "https://androidprojectv2.000webhostapp.com/Prov.php";
     private Map<String,String> params;
 
     public ProvRequest(String login, Response.Listener<String> listener){

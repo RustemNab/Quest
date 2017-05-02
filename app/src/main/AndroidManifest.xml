@@ -18,10 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TasksActivity" />
         <activity android:name=".RegistrActivity" />
         <activity android:name=".InterfaceActivity" />
         <activity android:name=".GoToGameActivity" />
-        <activity android:name=".GameInterfaceActivity"></activity>
+        <activity android:name=".GameInterfaceActivity" />
+        <activity android:name=".QuestionsActivity" />
+        <activity android:name=".QuestionAnswerActivity" />
+        <activity android:name=".TaskAnswerActivity"></activity>
     </application>
 
 </manifest>
