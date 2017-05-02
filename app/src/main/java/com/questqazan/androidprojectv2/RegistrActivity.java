@@ -55,12 +55,45 @@ public class RegistrActivity extends Activity {
                                             JSONObject jsonResponse = new JSONObject(response);
                                             boolean success = jsonResponse.getBoolean("success");
 
-                                            if (success) {
-                                                Intent intent = new Intent(RegistrActivity.this, LoginActivity.class);
-                                                RegistrActivity.this.startActivity(intent);
+                                            if (success)
+                                            {
+                                                //Создания строки в таблице отвечаемости
+                                                Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                                                    @Override
+                                                    public void onResponse(String response) {
+                                                        try {
+                                                            JSONObject jsonResponse = new JSONObject(response);
+                                                            boolean success = jsonResponse.getBoolean("success");
 
+                                                            if (success) {
+                                                                Intent intent = new Intent(RegistrActivity.this, LoginActivity.class);
+                                                                RegistrActivity.this.startActivity(intent);
 
-                                            } else {
+                                                            } else {
+                                                                AlertDialog.Builder builder = new AlertDialog.Builder(RegistrActivity.this);
+                                                                builder.setMessage("Registr failed (in Questioning)")
+                                                                        .setNegativeButton("Retry", null)
+                                                                        .create()
+                                                                        .show();
+                                                                registr.setVisibility(View.VISIBLE);
+
+                                                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
+                                                                y.show();
+                                                            }
+                                                        } catch (JSONException e) {
+                                                            Toast y = Toast.makeText(getApplication(), "Catch registr (in Questioning)", Toast.LENGTH_LONG);
+                                                            y.show();
+                                                            registr.setVisibility(View.VISIBLE);
+                                                        }
+                                                    }
+                                                };
+
+                                                AddInQuestioningRequest addInQuestioningRequest = new AddInQuestioningRequest(login, responseListener1);
+                                                RequestQueue queue1 = Volley.newRequestQueue(RegistrActivity.this);
+                                                queue1.add(addInQuestioningRequest);
+                                            }
+                                            else
+                                                {
                                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegistrActivity.this);
                                                 builder.setMessage("Registr failed")
                                                         .setNegativeButton("Retry", null)

@@ -21,7 +21,7 @@
 
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardview3"
+        android:id="@+id/cardView3"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -45,7 +45,7 @@
         style="@style/MyCardViewStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardview3"  >
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"  >
 
         <TextView
             android:id="@+id/textView24"
