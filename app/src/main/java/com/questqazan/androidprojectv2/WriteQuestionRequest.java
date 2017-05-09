@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class AllInfoRequest extends StringRequest {
-    private static final String AllInfo_REQUST_URL = "https://aydar-test.000webhostapp.com/AllInfo.php";
+public class WriteQuestionRequest extends StringRequest {
+    private static final String Question_REQUST_URL = "https://aydar-test.000webhostapp.com/WriteQuestion.php";
     private Map<String,String> params;
 
-    public AllInfoRequest(String login, Response.Listener<String> listener){
-        super(Request.Method.POST, AllInfo_REQUST_URL, listener, null);
+    public WriteQuestionRequest(String id, Response.Listener<String> listener){
+        super(Request.Method.POST, Question_REQUST_URL, listener, null);
         params = new HashMap<>();
-        params.put("login", login);
+        params.put("id", id);
     }
 
     public Map<String, String> getParams(){

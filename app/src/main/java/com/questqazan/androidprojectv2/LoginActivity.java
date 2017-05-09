@@ -31,7 +31,18 @@ public class LoginActivity extends Activity {
         final EditText LoginET = (EditText) findViewById(R.id.AnswerEt);
         final EditText PasswordET = (EditText) findViewById(R.id.PasswordEt);
         final Button signin = (Button) findViewById(R.id.Sign_In_button);
+        final Button game = (Button) findViewById(R.id.button2);
         final TextView registr = (TextView) findViewById(R.id.RegistrTV);
+        final String login_test = "test";
+
+        game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(LoginActivity.this, GameInterfaceActivity.class);
+                in.putExtra("login", login_test);
+                LoginActivity.this.startActivity(in);
+            }
+        });
 
         registr.setOnClickListener(new View.OnClickListener() {
             @Override
