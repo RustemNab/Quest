@@ -76,8 +76,10 @@ public class LoginActivity extends Activity {
                             final int [] b_game = {0};
                             if(success)
                             {
-
+                                Toast z = Toast.makeText(getApplication(), "Login", Toast.LENGTH_LONG);
+                                z.show();
                                 //// Проверка времени
+
                                 Response.Listener<String> responseListener1 = new Response.Listener<String>(){
                                     @Override
                                     public void onResponse(String response) {
@@ -99,8 +101,14 @@ public class LoginActivity extends Activity {
                                                 int hourNow = gcalendar.get(Calendar.HOUR_OF_DAY);
 
                                                 if (YearNow == year) {
+                                                    Toast y = Toast.makeText(getApplication(), "Year", Toast.LENGTH_LONG);
+                                                    y.show();
                                                     if (mounthNow == mounth) {
+                                                        Toast yy = Toast.makeText(getApplication(), "Month", Toast.LENGTH_LONG);
+                                                        yy.show();
                                                         if (dayNow == day) {
+                                                            Toast yyy = Toast.makeText(getApplication(), "Day", Toast.LENGTH_LONG);
+                                                            yyy.show();
                                                             if ((hourNow >= hour_start) && (hourNow < hour_finish)) {
                                                                 ////данные о игре
                                                                 Response.Listener<String> responseListener = new Response.Listener<String>()
@@ -215,7 +223,7 @@ public class LoginActivity extends Activity {
                                 y.show();
                                 signin.setVisibility(View.VISIBLE);
                             }
-                            
+
                         } catch (JSONException e) {
                             Toast y = Toast.makeText(getApplication(), "Catch", Toast.LENGTH_LONG);
                             y.show();
@@ -223,7 +231,7 @@ public class LoginActivity extends Activity {
                         }
                     }
                 };
-                
+
                 LoginRequest loginRequest = new LoginRequest(login, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);

@@ -9,7 +9,9 @@ import java.util.Map;
 
 
 public class ChangePoints extends StringRequest {
-    private static final String ChangePoints_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangePoints.php";
+    //private static final String ChangePoints_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangePoints.php";
+    private static final String ChangePoints_REQUST_URL = "https://questqazan.000webhostapp.com/ChangePoints.php";
+
     private Map<String,String> params;
 
     public ChangePoints(String login, int point, int all_point, Response.Listener<String> listener){

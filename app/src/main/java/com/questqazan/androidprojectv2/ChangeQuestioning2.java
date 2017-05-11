@@ -12,7 +12,9 @@ import java.util.Map;
  */
 
 public class ChangeQuestioning2 extends StringRequest {
-    private static final String Change_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangeQuestioning2.php";
+    //private static final String Change_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangeQuestioning2.php";
+    private static final String Change_REQUST_URL = "https://questqazan.000webhostapp.com/ChangeQuestioning2.php";
+
     private Map<String,String> params;
 
     public ChangeQuestioning2(String login, Response.Listener<String> listener){

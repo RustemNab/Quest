@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GoToGameRequest extends StringRequest {
-    private static final String GoToGame_REQUST_URL = "https://aydar-test.000webhostapp.com/GoToGame.php";
+    //private static final String GoToGame_REQUST_URL = "https://aydar-test.000webhostapp.com/GoToGame.php";
+    private static final String GoToGame_REQUST_URL = "https://questqazan.000webhostapp.com/GoToGame.php";
+
     private Map<String,String> params;
 
     public GoToGameRequest(String login, Response.Listener<String> listener){

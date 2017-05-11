@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegistrRequest extends StringRequest {
-    private static final String REGISTR_REQUST_URL = "https://aydar-test.000webhostapp.com/Registr.php";
+    //private static final String REGISTR_REQUST_URL = "https://aydar-test.000webhostapp.com/Registr.php";
+    private static final String REGISTR_REQUST_URL = "https://questqazan.000webhostapp.com/Registr.php";
+
     private Map<String,String> params;
 
     public RegistrRequest(String name, String login, String password, Response.Listener<String> listener){
