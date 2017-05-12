@@ -8,52 +8,60 @@
 
     <EditText
         android:id="@+id/PasswordET"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Пароль"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/LoginET"
-        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginET"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/LoginET"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Login"
+        android:hint="Логин"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/NameET"
-        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/NameET"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/NameET"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="189dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Имя"
         android:inputType="textPersonName"
-        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="159dp"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/Registr_button"
-        android:layout_width="147dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="29dp"
-        android:layout_marginRight="26dp"
-        android:text="Registr"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="26dp" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordET" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="360dp"
+        android:layout_height="56dp"
+        android:background="@drawable/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>
