@@ -1,11 +1,18 @@
 package com.questqazan.androidprojectv2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Space;
+
+import android.widget.Toast;
 
 public class GameInterfaceActivity extends AppCompatActivity {
 
@@ -21,6 +28,7 @@ public class GameInterfaceActivity extends AppCompatActivity {
         //Взятие логина после логинизации
         final Intent intent = getIntent();
         final String login = intent.getStringExtra("login");
+
 
 
         //Переход к вопросам
@@ -42,6 +50,36 @@ public class GameInterfaceActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        openQuitDialog();
+    }
+
+    private void openQuitDialog() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+                GameInterfaceActivity.this);
+        quitDialog.setTitle("Вы уверены, что хотите выйти?");
+
+        quitDialog.setPositiveButton("Да", new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                finishAffinity();
+            }
+        });
+
+        quitDialog.setNegativeButton("Нет", new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        quitDialog.show();
+    }
+
 }
 
 
