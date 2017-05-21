@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -45,9 +44,6 @@ public class GoToGameActivity extends AppCompatActivity {
 
                     if(success)
                     {
-                        //Toast t = Toast.makeText(getApplication(), "Info about time loaded", Toast.LENGTH_SHORT);
-                        //t.show();
-
                         TextView info = (TextView)findViewById(R.id.TimeInfoTV);
 
                         int year = jsonResponse.getInt("year");
@@ -102,13 +98,9 @@ public class GoToGameActivity extends AppCompatActivity {
                         }
                     }
                     else {
-                        Toast t = Toast.makeText(getApplication(), "Error in time load", Toast.LENGTH_LONG);
-                        t.show();
                     }
                 }
                 catch (JSONException e) {
-                    Toast y = Toast.makeText(getApplication(), "None Time", Toast.LENGTH_LONG);
-                    y.show();
                 }
             }
         };
@@ -128,9 +120,6 @@ public class GoToGameActivity extends AppCompatActivity {
 
                     if(success)
                     {
-                        //Toast t = Toast.makeText(getApplication(), "Info loaded", Toast.LENGTH_SHORT);
-                        //t.show();
-
                         int game = jsonResponse.getInt("game");
 
                         if(game != 0)
@@ -143,8 +132,6 @@ public class GoToGameActivity extends AppCompatActivity {
                     }
                 }
                 catch (JSONException e) {
-                    Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                    y.show();
                 }
             }
         };
@@ -162,9 +149,6 @@ public class GoToGameActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try{
-                            //Toast t = Toast.makeText(getApplication(), "I try", Toast.LENGTH_SHORT);
-                            //t.show();
-
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
 
@@ -176,8 +160,6 @@ public class GoToGameActivity extends AppCompatActivity {
                             }
                         }
                         catch (JSONException e) {
-                            Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                            y.show();
                         }
                     }
                 };

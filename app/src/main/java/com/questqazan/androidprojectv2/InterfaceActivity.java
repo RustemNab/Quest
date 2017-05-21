@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -51,8 +50,6 @@ public class InterfaceActivity extends Activity {
                     }
                 }
                 catch (JSONException e) {
-                    Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                    y.show();
                 }
             }
         };

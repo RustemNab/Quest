@@ -77,12 +77,8 @@ public class RegistrActivity extends Activity {
                                                                         .show();
                                                                 registr.setVisibility(View.VISIBLE);
 
-                                                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                                                y.show();
                                                             }
                                                         } catch (JSONException e) {
-                                                            Toast y = Toast.makeText(getApplication(), "Catch registr (in Questioning)", Toast.LENGTH_LONG);
-                                                            y.show();
                                                             registr.setVisibility(View.VISIBLE);
                                                         }
                                                     }
@@ -101,12 +97,8 @@ public class RegistrActivity extends Activity {
                                                         .show();
                                                 registr.setVisibility(View.VISIBLE);
 
-                                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                                y.show();
                                             }
                                         } catch (JSONException e) {
-                                            Toast y = Toast.makeText(getApplication(), "Catch registr", Toast.LENGTH_LONG);
-                                            y.show();
                                             registr.setVisibility(View.VISIBLE);
                                         }
                                     }
@@ -130,8 +122,6 @@ public class RegistrActivity extends Activity {
                         }
                         catch (JSONException e)
                         {
-                            Toast y = Toast.makeText(getApplication(), "Catch prov", Toast.LENGTH_SHORT);
-                            y.show();
                             registr.setVisibility(View.VISIBLE);
                         }
                     }

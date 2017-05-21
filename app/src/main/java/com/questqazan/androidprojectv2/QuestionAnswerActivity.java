@@ -29,17 +29,13 @@ public class QuestionAnswerActivity extends AppCompatActivity {
 
         final Intent intent = getIntent();
         final String login = intent.getStringExtra("login");
+        final String token = intent.getStringExtra("token");
         String question = intent.getStringExtra("Text_question");
         final String id = intent.getStringExtra("id");
         final int price = intent.getIntExtra("Price", -1);
         final int[] point = new int[1];
         final int[] all_point = new int[1];
         final String answer = intent.getStringExtra("Answer");
-
-        Toast y = Toast.makeText(getApplication(), price + "", Toast.LENGTH_LONG);
-        y.show();
-        Toast yy = Toast.makeText(getApplication(), id, Toast.LENGTH_LONG);
-        yy.show();
 
         ////
         questionText.setText(question);
@@ -81,8 +77,6 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                                                 }
                                             }
                                             catch (JSONException e){
-                                                Toast y = Toast.makeText(getApplication(), "NonePoints", Toast.LENGTH_LONG);
-                                                y.show();
                                             }
                                         }
                                     };
@@ -93,8 +87,6 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                                 }
                             }
                             catch (JSONException e) {
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                             }
                         }
                     };
@@ -106,20 +98,14 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                 //Изменение в Questioning
                 if(id.equals("1"))
                 {
-                    Toast y = Toast.makeText(getApplication(), "Was1", Toast.LENGTH_LONG);
-                    y.show();
                     Response.Listener<String> responseListener = new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response) {
                             try{
-                                Toast y = Toast.makeText(getApplication(), "Change1", Toast.LENGTH_LONG);
-                                y.show();
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                             }
                             catch (JSONException e) {
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                             }
                         }
                     };
@@ -130,20 +116,15 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                 }
                 if(id.equals("2"))
                 {
-                    Toast y = Toast.makeText(getApplication(), "Was2", Toast.LENGTH_LONG);
-                    y.show();
+
                     Response.Listener<String> responseListener = new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response) {
                             try{
-                                Toast y = Toast.makeText(getApplication(), "Change2", Toast.LENGTH_LONG);
-                                y.show();
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                             }
                             catch (JSONException e) {
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                             }
                         }
                     };
@@ -154,20 +135,14 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                 }
                 if(id.equals("3"))
                 {
-                    Toast y = Toast.makeText(getApplication(), "Was3", Toast.LENGTH_LONG);
-                    y.show();
                     Response.Listener<String> responseListener = new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response) {
                             try{
-                                Toast y = Toast.makeText(getApplication(), "Change3", Toast.LENGTH_LONG);
-                                y.show();
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                             }
                             catch (JSONException e) {
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                             }
                         }
                     };
@@ -178,20 +153,14 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                 }
                 if(id.equals("4"))
                 {
-                    Toast y = Toast.makeText(getApplication(), "Was4", Toast.LENGTH_LONG);
-                    y.show();
                     Response.Listener<String> responseListener = new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response) {
                             try{
-                                Toast y = Toast.makeText(getApplication(), "Change4", Toast.LENGTH_LONG);
-                                y.show();
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                             }
                             catch (JSONException e) {
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                             }
                         }
                     };
@@ -202,20 +171,14 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                 }
                 if(id.equals("5"))
                 {
-                    Toast y = Toast.makeText(getApplication(), "Was5", Toast.LENGTH_LONG);
-                    y.show();
                     Response.Listener<String> responseListener = new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response) {
                             try{
-                                Toast y = Toast.makeText(getApplication(), "Change5", Toast.LENGTH_LONG);
-                                y.show();
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                             }
                             catch (JSONException e) {
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                             }
                         }
                     };
@@ -228,6 +191,7 @@ public class QuestionAnswerActivity extends AppCompatActivity {
                 //Переход на поле вопросов
                 Intent intent1 = new Intent(QuestionAnswerActivity.this, QuestionsActivity.class);
                 intent1.putExtra("login",login);
+                intent1.putExtra("token",token);
                 QuestionAnswerActivity.this.startActivity(intent1);
             }
         });

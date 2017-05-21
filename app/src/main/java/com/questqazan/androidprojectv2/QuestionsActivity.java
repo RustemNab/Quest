@@ -1,8 +1,8 @@
 package com.questqazan.androidprojectv2;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 public class QuestionsActivity extends AppCompatActivity {
 
+    String LOGIN;
+    String TOKEN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,9 @@ public class QuestionsActivity extends AppCompatActivity {
         //Взятие логина после логинизации
         final Intent intent = getIntent();
         final String login = intent.getStringExtra("login");
+        final String token = intent.getStringExtra("token");
+        LOGIN = login;
+        TOKEN = token;
 
         final CardView cd1 = (CardView) findViewById(R.id.cardView1);
         final CardView cd2 = (CardView) findViewById(R.id.cardView2);
@@ -72,15 +77,11 @@ public class QuestionsActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try{
-                    Toast y = Toast.makeText(getApplication(), "Try", Toast.LENGTH_LONG);
-                    y.show();
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
 
                     if(success)
                     {
-                        Toast yy = Toast.makeText(getApplication(), "Visible", Toast.LENGTH_LONG);
-                        yy.show();
                         question1[0] = jsonResponse.getInt("question1");
                         question2[0] = jsonResponse.getInt("question2");
                         question3[0] = jsonResponse.getInt("question3");
@@ -94,8 +95,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try{
-                                        Toast y = Toast.makeText(getApplication(), "Try1", Toast.LENGTH_LONG);
-                                        y.show();
                                         JSONObject jsonResponse = new JSONObject(response);
                                         boolean success = jsonResponse.getBoolean("success");
 
@@ -109,9 +108,7 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
-                                        Toast y = Toast.makeText(getApplication(), "None1", Toast.LENGTH_LONG);
-                                        y.show();
-                                    }
+                                        }
                                 }
                             };
 
@@ -127,8 +124,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try{
-                                        Toast y = Toast.makeText(getApplication(), "Try2", Toast.LENGTH_LONG);
-                                        y.show();
                                         JSONObject jsonResponse = new JSONObject(response);
                                         boolean success = jsonResponse.getBoolean("success");
 
@@ -142,9 +137,7 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
-                                        Toast y = Toast.makeText(getApplication(), "None2", Toast.LENGTH_LONG);
-                                        y.show();
-                                    }
+                                        }
                                 }
                             };
 
@@ -160,8 +153,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try{
-                                        Toast y = Toast.makeText(getApplication(), "Try3", Toast.LENGTH_LONG);
-                                        y.show();
                                         JSONObject jsonResponse = new JSONObject(response);
                                         boolean success = jsonResponse.getBoolean("success");
 
@@ -175,8 +166,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
-                                        Toast y = Toast.makeText(getApplication(), "None3", Toast.LENGTH_LONG);
-                                        y.show();
                                     }
                                 }
                             };
@@ -193,8 +182,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try{
-                                        Toast y = Toast.makeText(getApplication(), "Try4", Toast.LENGTH_LONG);
-                                        y.show();
                                         JSONObject jsonResponse = new JSONObject(response);
                                         boolean success = jsonResponse.getBoolean("success");
 
@@ -208,8 +195,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
-                                        Toast y = Toast.makeText(getApplication(), "None4", Toast.LENGTH_LONG);
-                                        y.show();
                                     }
                                 }
                             };
@@ -226,8 +211,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try{
-                                        Toast y = Toast.makeText(getApplication(), "Try5", Toast.LENGTH_LONG);
-                                        y.show();
                                         JSONObject jsonResponse = new JSONObject(response);
                                         boolean success = jsonResponse.getBoolean("success");
 
@@ -241,8 +224,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
-                                        Toast y = Toast.makeText(getApplication(), "None5", Toast.LENGTH_LONG);
-                                        y.show();
                                     }
                                 }
                             };
@@ -255,8 +236,6 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
                 }
                 catch (JSONException e) {
-                    Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                    y.show();
                 }
             }
         };
@@ -269,62 +248,190 @@ public class QuestionsActivity extends AppCompatActivity {
         cd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
-                intent.putExtra("login",login);
-                intent.putExtra("id", id1);
-                intent.putExtra("Text_question", text1.getText());
-                intent.putExtra ("Answer",answer1[0]);
-                intent.putExtra("Price", price1[0]);
-                QuestionsActivity.this.startActivity(intent);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success)
+                            {
+                                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
+                                intent.putExtra("login",login);
+                                intent.putExtra("token",token);
+                                intent.putExtra("id", id1);
+                                intent.putExtra("Text_question", text1.getText());
+                                intent.putExtra ("Answer",answer1[0]);
+                                intent.putExtra("Price", price1[0]);
+                                QuestionsActivity.this.startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast y = Toast.makeText(getApplication(), "Please, reload application", Toast.LENGTH_LONG);
+                                y.show();
+                                finishAffinity();
+                            }
+                        } catch (JSONException e) {
+                        }
+                    }
+                };
+                ProvToken questionRequest = new ProvToken(login, token, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(QuestionsActivity.this);
+                queue.add(questionRequest);
+
+
             }
         });
         cd2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
-                intent.putExtra("login",login);
-                intent.putExtra("id", id2);
-                intent.putExtra("Text_question", text2.getText());
-                intent.putExtra("Answer",answer2[0]);
-                intent.putExtra("Price", price2[0]);
-                QuestionsActivity.this.startActivity(intent);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success)
+                            {
+                                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
+                                intent.putExtra("login",login);
+                                intent.putExtra("token",token);
+                                intent.putExtra("id", id2);
+                                intent.putExtra("Text_question", text2.getText());
+                                intent.putExtra("Answer",answer2[0]);
+                                intent.putExtra("Price", price2[0]);
+                                QuestionsActivity.this.startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast y = Toast.makeText(getApplication(), "Please, reload application", Toast.LENGTH_LONG);
+                                y.show();
+                                finishAffinity();
+                            }
+                        } catch (JSONException e) {
+                        }
+                    }
+                };
+                ProvToken questionRequest = new ProvToken(login, token, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(QuestionsActivity.this);
+                queue.add(questionRequest);
+
+
+
             }
         });
         cd3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
-                intent.putExtra("login",login);
-                intent.putExtra("id", id3);
-                intent.putExtra("Text_question", text3.getText());
-                intent.putExtra("Answer",answer3[0]);
-                intent.putExtra("Price", price3[0]);
-                QuestionsActivity.this.startActivity(intent);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success)
+                            {
+                                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
+                                intent.putExtra("login",login);
+                                intent.putExtra("token",token);
+                                intent.putExtra("id", id3);
+                                intent.putExtra("Text_question", text3.getText());
+                                intent.putExtra("Answer",answer3[0]);
+                                intent.putExtra("Price", price3[0]);
+                                QuestionsActivity.this.startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast y = Toast.makeText(getApplication(), "Please, reload application", Toast.LENGTH_LONG);
+                                y.show();
+                                finishAffinity();
+                            }
+                        } catch (JSONException e) {
+                        }
+                    }
+                };
+                ProvToken questionRequest = new ProvToken(login, token, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(QuestionsActivity.this);
+                queue.add(questionRequest);
             }
         });
         cd4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
-                intent.putExtra("login",login);
-                intent.putExtra("id", id4);
-                intent.putExtra("Text_question", text4.getText());
-                intent.putExtra("Answer",answer4[0]);
-                intent.putExtra("Price", price4[0]);
-                QuestionsActivity.this.startActivity(intent);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success)
+                            {
+                                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
+                                intent.putExtra("login",login);
+                                intent.putExtra("token",token);
+                                intent.putExtra("id", id4);
+                                intent.putExtra("Text_question", text4.getText());
+                                intent.putExtra("Answer",answer4[0]);
+                                intent.putExtra("Price", price4[0]);
+                                QuestionsActivity.this.startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast y = Toast.makeText(getApplication(), "Please, reload application", Toast.LENGTH_LONG);
+                                y.show();
+                                finishAffinity();
+                            }
+                        } catch (JSONException e) {
+                        }
+                    }
+                };
+                ProvToken questionRequest = new ProvToken(login, token, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(QuestionsActivity.this);
+                queue.add(questionRequest);
             }
         });
         cd5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
-                intent.putExtra("login",login);
-                intent.putExtra("id", id5);
-                intent.putExtra("Text_question", text5.getText());
-                intent.putExtra("Answer",answer5[0]);
-                intent.putExtra("Price", price5[0]);
-                QuestionsActivity.this.startActivity(intent);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success)
+                            {
+                                Intent intent = new Intent(QuestionsActivity.this, QuestionAnswerActivity.class);
+                                intent.putExtra("login",login);
+                                intent.putExtra("token",token);
+                                intent.putExtra("id", id5);
+                                intent.putExtra("Text_question", text5.getText());
+                                intent.putExtra("Answer",answer5[0]);
+                                intent.putExtra("Price", price5[0]);
+                                QuestionsActivity.this.startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast y = Toast.makeText(getApplication(), "Please, reload application", Toast.LENGTH_LONG);
+                                y.show();
+                                finishAffinity();
+                            }
+                        } catch (JSONException e) {
+                        }
+                    }
+                };
+                ProvToken questionRequest = new ProvToken(login, token, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(QuestionsActivity.this);
+                queue.add(questionRequest);
             }
         });
+    }
+
+    public void onBackPressed() {
+        // super.onBackPressed();
+        Intent intent = new Intent(QuestionsActivity.this, GameInterfaceActivity.class);
+        intent.putExtra("login",LOGIN);
+        intent.putExtra("token",TOKEN);
+        QuestionsActivity.this.startActivity(intent);
     }
 }

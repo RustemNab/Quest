@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -65,7 +64,8 @@ public class LoginActivity extends Activity {
                         .create()
                         .show();
 
-                //Логин
+
+                //Логин (Проверка на существование)
                 Response.Listener<String> responseListener = new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
@@ -76,141 +76,150 @@ public class LoginActivity extends Activity {
                             final int [] b_game = {0};
                             if(success)
                             {
-                                Toast z = Toast.makeText(getApplication(), "Login", Toast.LENGTH_LONG);
-                                z.show();
-                                //// Проверка времени
-
-                                Response.Listener<String> responseListener1 = new Response.Listener<String>(){
+                                //Прописываем токен в базе
+                                Response.Listener<String> responseListenerr = new Response.Listener<String>(){
                                     @Override
                                     public void onResponse(String response) {
                                         try {
                                             JSONObject jsonResponse = new JSONObject(response);
                                             boolean success = jsonResponse.getBoolean("success");
+                                            final String tok = jsonResponse.getString("token");
+                                            if(success)
+                                            {
+                                                //// Проверка времени
+                                                Response.Listener<String> responseListener1 = new Response.Listener<String>(){
+                                                    @Override
+                                                    public void onResponse(String response) {
+                                                        try {
+                                                            JSONObject jsonResponse = new JSONObject(response);
+                                                            boolean success = jsonResponse.getBoolean("success");
 
-                                            if (success) {
-                                                int year = jsonResponse.getInt("year");
-                                                int mounth = jsonResponse.getInt("mounth");
-                                                int day = jsonResponse.getInt("day");
-                                                int hour_start = jsonResponse.getInt("hour_start");
-                                                int hour_finish = jsonResponse.getInt("hour_finish");
+                                                            if (success) {
+                                                                int year = jsonResponse.getInt("year");
+                                                                int mounth = jsonResponse.getInt("mounth");
+                                                                int day = jsonResponse.getInt("day");
+                                                                int hour_start = jsonResponse.getInt("hour_start");
+                                                                int hour_finish = jsonResponse.getInt("hour_finish");
 
-                                                GregorianCalendar gcalendar = new GregorianCalendar();
-                                                int mounthNow = gcalendar.get(Calendar.MONTH);
-                                                int YearNow = gcalendar.get(Calendar.YEAR);
-                                                int dayNow = gcalendar.get(Calendar.DAY_OF_MONTH);
-                                                int hourNow = gcalendar.get(Calendar.HOUR_OF_DAY);
+                                                                GregorianCalendar gcalendar = new GregorianCalendar();
+                                                                int mounthNow = gcalendar.get(Calendar.MONTH);
+                                                                int YearNow = gcalendar.get(Calendar.YEAR);
+                                                                int dayNow = gcalendar.get(Calendar.DAY_OF_MONTH);
+                                                                int hourNow = gcalendar.get(Calendar.HOUR_OF_DAY);
 
-                                                if (YearNow == year) {
-                                                    Toast y = Toast.makeText(getApplication(), "Year", Toast.LENGTH_LONG);
-                                                    y.show();
-                                                    if (mounthNow == mounth) {
-                                                        Toast yy = Toast.makeText(getApplication(), "Month", Toast.LENGTH_LONG);
-                                                        yy.show();
-                                                        if (dayNow == day) {
-                                                            Toast yyy = Toast.makeText(getApplication(), "Day", Toast.LENGTH_LONG);
-                                                            yyy.show();
-                                                            if ((hourNow >= hour_start) && (hourNow < hour_finish)) {
-                                                                ////данные о игре
-                                                                Response.Listener<String> responseListener = new Response.Listener<String>()
-                                                                {
-                                                                    @Override
-                                                                    public void onResponse(String response) {
-                                                                        try{
-                                                                            JSONObject jsonResponse = new JSONObject(response);
-                                                                            boolean success = jsonResponse.getBoolean("success");
+                                                                if (YearNow == year) {
+                                                                    if (mounthNow == mounth) {
+                                                                        if (dayNow == day) {
+                                                                            if ((hourNow >= hour_start) && (hourNow < hour_finish)) {
+                                                                                ////данные о игре
+                                                                                Response.Listener<String> responseListener = new Response.Listener<String>()
+                                                                                {
+                                                                                    @Override
+                                                                                    public void onResponse(String response) {
+                                                                                        try{
+                                                                                            JSONObject jsonResponse = new JSONObject(response);
+                                                                                            boolean success = jsonResponse.getBoolean("success");
 
-                                                                            if(success)
+                                                                                            if(success)
+                                                                                            {
+                                                                                                int game = jsonResponse.getInt("game");
+
+                                                                                                if(game != 0)
+                                                                                                {
+                                                                                                    String login =  LoginET.getText().toString();
+
+                                                                                                    Intent intent = new Intent(LoginActivity.this, GameInterfaceActivity.class);
+                                                                                                    intent.putExtra("login", login);
+                                                                                                    intent.putExtra("token", tok);
+                                                                                                    signin.setVisibility(View.VISIBLE);
+
+                                                                                                    LoginActivity.this.startActivity(intent);
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    String login =  LoginET.getText().toString();
+
+                                                                                                    Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                                                    intent.putExtra("login", login);
+                                                                                                    signin.setVisibility(View.VISIBLE);
+
+                                                                                                    LoginActivity.this.startActivity(intent);
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                        catch (JSONException e) {
+                                                                                        }
+                                                                                    }
+                                                                                };
+
+                                                                                AllInfoRequest allInfoRequest = new AllInfoRequest(login, responseListener);
+                                                                                RequestQueue queue1 = Volley.newRequestQueue(LoginActivity.this);
+                                                                                queue1.add(allInfoRequest);
+                                                                                ////
+                                                                            }
+                                                                            else
                                                                             {
-                                                                                int game = jsonResponse.getInt("game");
+                                                                                String login =  LoginET.getText().toString();
 
-                                                                                if(game != 0)
-                                                                                {
-                                                                                    String login =  LoginET.getText().toString();
+                                                                                Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                                intent.putExtra("login", login);
+                                                                                signin.setVisibility(View.VISIBLE);
 
-                                                                                    Intent intent = new Intent(LoginActivity.this, GameInterfaceActivity.class);
-                                                                                    intent.putExtra("login", login);
-                                                                                    signin.setVisibility(View.VISIBLE);
-
-                                                                                    LoginActivity.this.startActivity(intent);
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    String login =  LoginET.getText().toString();
-
-                                                                                    Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                                                                    intent.putExtra("login", login);
-                                                                                    signin.setVisibility(View.VISIBLE);
-
-                                                                                    LoginActivity.this.startActivity(intent);
-                                                                                }
+                                                                                LoginActivity.this.startActivity(intent);
                                                                             }
                                                                         }
-                                                                        catch (JSONException e) {
-                                                                            Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                                                            y.show();
+                                                                        else
+                                                                        {
+                                                                            String login =  LoginET.getText().toString();
+
+                                                                            Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                            intent.putExtra("login", login);
+                                                                            signin.setVisibility(View.VISIBLE);
+
+                                                                            LoginActivity.this.startActivity(intent);
                                                                         }
                                                                     }
-                                                                };
+                                                                    else
+                                                                    {
+                                                                        String login =  LoginET.getText().toString();
 
-                                                                AllInfoRequest allInfoRequest = new AllInfoRequest(login, responseListener);
-                                                                RequestQueue queue1 = Volley.newRequestQueue(LoginActivity.this);
-                                                                queue1.add(allInfoRequest);
-                                                                ////
-                                                            }
-                                                            else
-                                                            {
-                                                                String login =  LoginET.getText().toString();
+                                                                        Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                        intent.putExtra("login", login);
+                                                                        signin.setVisibility(View.VISIBLE);
 
-                                                                Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                                                intent.putExtra("login", login);
-                                                                signin.setVisibility(View.VISIBLE);
+                                                                        LoginActivity.this.startActivity(intent);
+                                                                    }
+                                                                }
+                                                                else {
+                                                                    String login =  LoginET.getText().toString();
 
-                                                                LoginActivity.this.startActivity(intent);
+                                                                    Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
+                                                                    intent.putExtra("login", login);
+                                                                    signin.setVisibility(View.VISIBLE);
+
+                                                                    LoginActivity.this.startActivity(intent);
+                                                                }
                                                             }
                                                         }
-                                                        else
-                                                        {
-                                                            String login =  LoginET.getText().toString();
-
-                                                            Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                                            intent.putExtra("login", login);
-                                                            signin.setVisibility(View.VISIBLE);
-
-                                                            LoginActivity.this.startActivity(intent);
+                                                        catch (JSONException e) {
                                                         }
                                                     }
-                                                    else
-                                                    {
-                                                        String login =  LoginET.getText().toString();
+                                                };
 
-                                                        Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                                        intent.putExtra("login", login);
-                                                        signin.setVisibility(View.VISIBLE);
-
-                                                        LoginActivity.this.startActivity(intent);
-                                                    }
-                                                }
-                                                else {
-                                                    String login =  LoginET.getText().toString();
-
-                                                    Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
-                                                    intent.putExtra("login", login);
-                                                    signin.setVisibility(View.VISIBLE);
-
-                                                    LoginActivity.this.startActivity(intent);
-                                                }
+                                                TimeToStart timeToStart = new TimeToStart("1", responseListener1);
+                                                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                                                queue.add(timeToStart);
                                             }
                                         }
                                         catch (JSONException e) {
-                                            Toast y = Toast.makeText(getApplication(), "None Time", Toast.LENGTH_LONG);
-                                            y.show();
-                                            }
+                                            signin.setVisibility(View.VISIBLE);
                                         }
-                                    };
+                                    }
+                                };
 
-                                    TimeToStart timeToStart = new TimeToStart("1", responseListener1);
-                                    RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                                    queue.add(timeToStart);
+                                TokenRequest tokenRequest = new TokenRequest(login, responseListenerr);
+                                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                                queue.add(tokenRequest);
                                 ////
                             }
                             else{
@@ -219,14 +228,10 @@ public class LoginActivity extends Activity {
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();
-                                Toast y = Toast.makeText(getApplication(), "None", Toast.LENGTH_LONG);
-                                y.show();
                                 signin.setVisibility(View.VISIBLE);
                             }
 
                         } catch (JSONException e) {
-                            Toast y = Toast.makeText(getApplication(), "Catch", Toast.LENGTH_LONG);
-                            y.show();
                             signin.setVisibility(View.VISIBLE);
                         }
                     }
