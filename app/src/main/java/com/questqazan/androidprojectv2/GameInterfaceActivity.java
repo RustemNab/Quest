@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Space;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,6 +28,7 @@ public class GameInterfaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_interface);
 
+        TextView tv = (TextView)findViewById(R.id.textView12);
         final Space questions = (Space) findViewById(R.id.go_questions);
         final Space tasks = (Space) findViewById(R.id.go_tasks);
         ImageView question_im = (ImageView) findViewById(R.id.imageView8);
@@ -34,7 +37,8 @@ public class GameInterfaceActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         final String login = intent.getStringExtra("login");
         final String token = intent.getStringExtra("token");
-
+        final int finish = intent.getIntExtra("finish", 0);
+        tv.setText(finish+":00");
         LOGIN = login;
 
         //Переход к вопросам

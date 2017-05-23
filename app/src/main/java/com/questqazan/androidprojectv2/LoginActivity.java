@@ -99,7 +99,7 @@ public class LoginActivity extends Activity {
                                                                 int mounth = jsonResponse.getInt("mounth");
                                                                 int day = jsonResponse.getInt("day");
                                                                 int hour_start = jsonResponse.getInt("hour_start");
-                                                                int hour_finish = jsonResponse.getInt("hour_finish");
+                                                                final int hour_finish = jsonResponse.getInt("hour_finish");
 
                                                                 GregorianCalendar gcalendar = new GregorianCalendar();
                                                                 int mounthNow = gcalendar.get(Calendar.MONTH);
@@ -131,6 +131,7 @@ public class LoginActivity extends Activity {
                                                                                                     Intent intent = new Intent(LoginActivity.this, GameInterfaceActivity.class);
                                                                                                     intent.putExtra("login", login);
                                                                                                     intent.putExtra("token", tok);
+                                                                                                    intent.putExtra("finish", hour_finish);
                                                                                                     signin.setVisibility(View.VISIBLE);
 
                                                                                                     LoginActivity.this.startActivity(intent);
