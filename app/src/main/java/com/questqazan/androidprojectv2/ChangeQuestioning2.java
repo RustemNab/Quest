@@ -7,13 +7,10 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Riga on 09.05.2017.
- */
 
 public class ChangeQuestioning2 extends StringRequest {
-    //private static final String Change_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangeQuestioning2.php";
-    private static final String Change_REQUST_URL = "https://questqazan.000webhostapp.com/ChangeQuestioning2.php";
+    private static final String Change_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangeQuestioning2.php";
+    //private static final String Change_REQUST_URL = "https://questqazan.000webhostapp.com/ChangeQuestioning2.php";
 
     private Map<String,String> params;
 

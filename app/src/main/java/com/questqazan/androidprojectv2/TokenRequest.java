@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TokenRequest extends StringRequest {
-    //private static final String TOKEN_REQUST_URL = "https://aydar-test.000webhostapp.com/Token.php";
-    private static final String TOKEN_REQUST_URL = "https://questqazan.000webhostapp.com/Token.php";
+    private static final String TOKEN_REQUST_URL = "https://aydar-test.000webhostapp.com/Token.php";
+    //private static final String TOKEN_REQUST_URL = "https://questqazan.000webhostapp.com/Token.php";
 
     private Map<String,String> params;
 

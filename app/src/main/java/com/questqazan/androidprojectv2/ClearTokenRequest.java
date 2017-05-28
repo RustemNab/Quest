@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ClearTokenRequest extends StringRequest {
-    //private static final String ClearToken_REQUST_URL = "https://aydar-test.000webhostapp.com/ClearToken.php";
-    private static final String ClearToken_REQUST_URL = "https://questqazan.000webhostapp.com/ClearToken.php";
+    private static final String ClearToken_REQUST_URL = "https://aydar-test.000webhostapp.com/ClearToken.php";
+    //private static final String ClearToken_REQUST_URL = "https://questqazan.000webhostapp.com/ClearToken.php";
 
     private Map<String,String> params;
 

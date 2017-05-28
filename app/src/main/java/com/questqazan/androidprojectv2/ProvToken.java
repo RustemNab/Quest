@@ -7,13 +7,10 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Riga on 21.05.2017.
- */
 
 public class ProvToken  extends StringRequest {
-    //private static final String ProvToken_REQUST_URL = "https://aydar-test.000webhostapp.com/ProverkaToken.php";
-    private static final String ProvToken_REQUST_URL = "https://questqazan.000webhostapp.com/ProverkaToken.php";
+    private static final String ProvToken_REQUST_URL = "https://aydar-test.000webhostapp.com/ProverkaToken.php";
+    //private static final String ProvToken_REQUST_URL = "https://questqazan.000webhostapp.com/ProverkaToken.php";
 
     private Map<String,String> params;
 

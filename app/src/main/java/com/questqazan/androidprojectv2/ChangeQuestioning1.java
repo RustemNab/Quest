@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangeQuestioning1 extends StringRequest {
-    //private static final String Change_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangeQuestioning1.php";
-    private static final String Change_REQUST_URL = "https://questqazan.000webhostapp.com/ChangeQuestioning1.php";
+    private static final String Change_REQUST_URL = "https://aydar-test.000webhostapp.com/ChangeQuestioning1.php";
+    //private static final String Change_REQUST_URL = "https://questqazan.000webhostapp.com/ChangeQuestioning1.php";
 
     private Map<String,String> params;
 

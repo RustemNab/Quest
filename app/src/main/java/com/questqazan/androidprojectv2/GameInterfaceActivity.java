@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Space;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -48,6 +47,7 @@ public class GameInterfaceActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(GameInterfaceActivity.this, QuestionsActivity.class);
                 intent1.putExtra("login", login);
                 intent1.putExtra("token", token);
+                intent1.putExtra("finish",finish);
                 GameInterfaceActivity.this.startActivity(intent1);
             }
         });

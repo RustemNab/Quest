@@ -19,6 +19,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
     String LOGIN;
     String TOKEN;
+    int FINISH;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,10 @@ public class QuestionsActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         final String login = intent.getStringExtra("login");
         final String token = intent.getStringExtra("token");
+        final int finish = intent.getIntExtra("finish", 0);
         LOGIN = login;
         TOKEN = token;
+        FINISH = finish;
 
         final CardView cd1 = (CardView) findViewById(R.id.cardView1);
         final CardView cd2 = (CardView) findViewById(R.id.cardView2);
@@ -108,6 +111,21 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
+                                        try{
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
+
+                                            if(success)
+                                            {
+                                                String question = jsonResponse.getString("question");
+                                                answer1[0] = jsonResponse.getString("answer");
+                                                price1[0] = jsonResponse.getInt("price");
+
+                                                text1.setText(question);
+                                            }
+                                        }
+                                        catch (JSONException ee) {
+                                        }
                                         }
                                 }
                             };
@@ -137,6 +155,21 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
+                                        try{
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
+
+                                            if(success)
+                                            {
+                                                String question = jsonResponse.getString("question");
+                                                answer2[0] = jsonResponse.getString("answer");
+                                                price2[0] = jsonResponse.getInt("price");
+
+                                                text2.setText(question);
+                                            }
+                                        }
+                                        catch (JSONException ee) {
+                                        }
                                         }
                                 }
                             };
@@ -166,6 +199,21 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
+                                        try{
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
+
+                                            if(success)
+                                            {
+                                                String question = jsonResponse.getString("question");
+                                                answer3[0] = jsonResponse.getString("answer");
+                                                price3[0] = jsonResponse.getInt("price");
+
+                                                text3.setText(question);
+                                            }
+                                        }
+                                        catch (JSONException ee) {
+                                        }
                                     }
                                 }
                             };
@@ -195,6 +243,21 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
+                                        try{
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
+
+                                            if(success)
+                                            {
+                                                String question = jsonResponse.getString("question");
+                                                answer4[0] = jsonResponse.getString("answer");
+                                                price4[0] = jsonResponse.getInt("price");
+
+                                                text4.setText(question);
+                                            }
+                                        }
+                                        catch (JSONException ee) {
+                                        }
                                     }
                                 }
                             };
@@ -224,6 +287,21 @@ public class QuestionsActivity extends AppCompatActivity {
                                         }
                                     }
                                     catch (JSONException e) {
+                                        try{
+                                            JSONObject jsonResponse = new JSONObject(response);
+                                            boolean success = jsonResponse.getBoolean("success");
+
+                                            if(success)
+                                            {
+                                                String question = jsonResponse.getString("question");
+                                                answer5[0] = jsonResponse.getString("answer");
+                                                price5[0] = jsonResponse.getInt("price");
+
+                                                text5.setText(question);
+                                            }
+                                        }
+                                        catch (JSONException ee) {
+                                        }
                                     }
                                 }
                             };
@@ -429,9 +507,10 @@ public class QuestionsActivity extends AppCompatActivity {
 
     public void onBackPressed() {
         // super.onBackPressed();
-        Intent intent = new Intent(QuestionsActivity.this, GameInterfaceActivity.class);
-        intent.putExtra("login",LOGIN);
-        intent.putExtra("token",TOKEN);
-        QuestionsActivity.this.startActivity(intent);
+        Intent intent2 = new Intent(QuestionsActivity.this, GameInterfaceActivity.class);
+        intent2.putExtra("login",LOGIN);
+        intent2.putExtra("token",TOKEN);
+        intent2.putExtra("finish",FINISH);
+        this.startActivity(intent2);
     }
 }

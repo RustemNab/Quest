@@ -37,9 +37,9 @@
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Вопрос"
                 android:textColor="@color/colorWhite"
-                android:textSize="16dp"
-                android:text="авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+                android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/AnswerT"

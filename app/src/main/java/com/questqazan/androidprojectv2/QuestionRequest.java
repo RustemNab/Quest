@@ -12,8 +12,8 @@ import java.util.Map;
  */
 
 public class QuestionRequest extends StringRequest {
-    //private static final String Question_REQUST_URL = "https://aydar-test.000webhostapp.com/QuestionRequest.php";
-    private static final String Question_REQUST_URL = "https://questqazan.000webhostapp.com/QuestionRequest.php";
+    private static final String Question_REQUST_URL = "https://aydar-test.000webhostapp.com/QuestionRequest.php";
+    //private static final String Question_REQUST_URL = "https://questqazan.000webhostapp.com/QuestionRequest.php";
 
     private Map<String,String> params;
 

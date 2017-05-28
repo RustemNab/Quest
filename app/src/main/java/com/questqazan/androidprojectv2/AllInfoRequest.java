@@ -9,8 +9,8 @@ import java.util.Map;
 
 
 public class AllInfoRequest extends StringRequest {
-    //private static final String AllInfo_REQUST_URL = "https://aydar-test.000webhostapp.com/AllInfo.php";
-    private static final String AllInfo_REQUST_URL = "https://questqazan.000webhostapp.com/AllInfo.php";
+    private static final String AllInfo_REQUST_URL = "https://aydar-test.000webhostapp.com/AllInfo.php";
+    //private static final String AllInfo_REQUST_URL = "https://questqazan.000webhostapp.com/AllInfo.php";
     private Map<String,String> params;
 
     public AllInfoRequest(String login, Response.Listener<String> listener){
