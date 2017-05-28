@@ -66,10 +66,10 @@ public class GoToGameActivity extends AppCompatActivity {
                                         info.setText(hour_start - hourNow + " hours");
                                     }
                                     if((hourNow >= hour_start)&&(hourNow < hour_finish)){
-                                        info.setText("Game started!! Finish will at " + hour_finish + ":00" );
+                                        info.setText("Игра началась! Финиш в " + hour_finish + ":00" );
                                     }
                                     if(hourNow > hour_finish)
-                                        info.setText("Game Finished!!");
+                                        info.setText("Игра окончена");
                                 }
                                 else{
                                     info.setText(day - dayNow + " days");
@@ -124,7 +124,7 @@ public class GoToGameActivity extends AppCompatActivity {
 
                         if(game != 0)
                         {
-                            InGame.setText("You already in Game");
+                            InGame.setText("Вы зарегестрированы");
                             InGame.setVisibility(View.VISIBLE);
                         }
                         else
@@ -154,7 +154,7 @@ public class GoToGameActivity extends AppCompatActivity {
 
                             if(success)
                             {
-                                InGame.setText("You already in Game");
+                                InGame.setText("Вы зарегестрированы");
                                 InGame.setVisibility(View.VISIBLE);
                                 but.setVisibility(View.INVISIBLE);
                             }
