@@ -20,34 +20,53 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="2dp" />
 
+    <ScrollView
+        android:id="@+id/item_scrollview"
+        android:layout_width="364dp"
+        android:layout_height="wrap_content"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="none"
+        app:layout_constraintLeft_toLeftOf="@id/toolbar2"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        tools:layout_editor_absoluteX="8dp"
+        tools:visibility="visible"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp">
+
+        <LinearLayout
+            android:id="@+id/item_wrapper_layout"
+            android:layout_width="352dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="82dp">
+
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cardView3"
+                android:id="@+id/cardView1"
+                style="@style/MyCardViewStyle"
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"   >
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Вопрос 3. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+                    android:text="Вопрос 1. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
             </android.support.v7.widget.CardView>
-
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardView2"
+                style="@style/MyCardViewStyle"
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView1"  >
+                app:layout_constraintTop_toBottomOf="@+id/cardView1">
 
                 <TextView
                     android:id="@+id/textView12"
@@ -56,34 +75,32 @@
                     android:text="Вопрос 2. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
-                android:id="@+id/cardView5"
-                android:layout_width="352dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:id="@+id/cardView3"
                 style="@style/MyCardViewStyle"
+                android:layout_width="352dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4"   >
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Вопрос 5. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+                    android:text="Вопрос 3. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
             </android.support.v7.widget.CardView>
-
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardView4"
+                style="@style/MyCardViewStyle"
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                style="@style/MyCardViewStyle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView3"       >
+                app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
                 <TextView
                     android:id="@+id/textView14"
@@ -93,24 +110,23 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cardView1"
-                android:layout_width="352dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="7dp"
+                android:id="@+id/cardView5"
                 style="@style/MyCardViewStyle"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar2" >
+                app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Вопрос 1. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
+                    android:text="Вопрос 5. авыовырлопрвалопрвыалодпрдлвыаопрыдаопрдлвыаопрвыаолдвылрпываолд" />
             </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
